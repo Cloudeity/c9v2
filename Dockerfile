@@ -7,7 +7,7 @@ RUN apk add --no-cache  \
 
 # Add a ec2-user user so that we we are not running as root
 RUN set -x ; \
-  adduser -u 1000 -D -S --gid 1000 ec2-user
+  adduser -u 1000 -D -S -G ec2-user 1000
   
 RUN git clone https://github.com/exsilium/cloud9.git && \
     chown -R ec2-user /cloud9
