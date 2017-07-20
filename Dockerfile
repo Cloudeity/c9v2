@@ -6,11 +6,10 @@ RUN apk add --no-cache  \
         git
 
 # Add a ec2-user user so that we we are not running as root
-RUN addgroup ec2-user && \
-    adduser -D -u 1000 ec2-user && \
-    usermod -a -G ec2-user root && \
-    echo 'ec2-user ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
-    
+RUN set -x ; \
+  addgroup -g 1000 -S ec2-user ; \
+  adduser -u 1000 -D -S -G ec2-user ec2-user
+  
 RUN git clone https://github.com/exsilium/cloud9.git && \
     chown -R ec2-user /cloud9
 WORKDIR /cloud9
