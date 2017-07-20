@@ -4,17 +4,12 @@ RUN apk add --no-cache  \
         build-base \
         python \
         git
-
-# Add a ec2-user user so that we we are not running as root
-RUN id -nu 1000
-RUN set -x ; \
-  adduser -u 1000 -D -S ec2-user
   
 RUN git clone https://github.com/exsilium/cloud9.git && \
     chown -R ec2-user /cloud9
 WORKDIR /cloud9
 RUN npm install
-USER ec2-user
+USER node
 VOLUME /workspace
 EXPOSE 3131
 
