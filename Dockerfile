@@ -6,7 +6,7 @@ RUN apk add --no-cache  \
         git
   
 RUN git clone https://github.com/exsilium/cloud9.git && \
-    chown -R ec2-user /cloud9
+    chown -R node /cloud9
 WORKDIR /cloud9
 RUN npm install
 USER node
