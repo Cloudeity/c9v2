@@ -14,8 +14,8 @@ RUN addgroup ec2-user && \
 RUN git clone https://github.com/exsilium/cloud9.git && \
     chown -R ec2-user /cloud9
 WORKDIR /cloud9
-USER ec2-user
 RUN npm install
+USER ec2-user
 VOLUME /workspace
 EXPOSE 3131
 
