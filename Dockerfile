@@ -7,7 +7,7 @@ RUN apk add --no-cache  \
 
 # Add a ec2-user user so that we we are not running as root
 RUN addgroup ec2-user && \
-    useradd --system -g ec2-user --uid 1000 -m -s /bin/bash ec2-user && \
+    adduser -D -u 1000 ec2-user && \
     usermod -a -G ec2-user root && \
     echo 'ec2-user ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
     
